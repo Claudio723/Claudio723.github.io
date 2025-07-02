@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modernes, adaptive Pillenheader Design</title>
+    <title>Modernes, adaptive Website-Design</title>
     <style>
+        /* Allgemeine Einstellungen */
         * {
             margin: 0;
             padding: 0;
@@ -14,9 +16,12 @@
         body {
             background-color: #f0f2f5;
             min-height: 100vh;
-            padding-top: 120px;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            padding: 0 20px;
         }
 
+        /* Header-Design */
         .pill-header {
             position: fixed;
             top: 40px;
@@ -38,7 +43,6 @@
             display: flex;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
         }
 
         .nav-tabs {
@@ -47,14 +51,6 @@
             position: relative;
             justify-content: center;
             width: 100%;
-            overflow-x: auto;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-            -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-        }
-
-        /* Custom scroll styling */
-        .nav-tabs::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
         }
 
         .nav-tab {
@@ -68,7 +64,6 @@
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
 
         .nav-tab:hover {
@@ -90,18 +85,124 @@
             border-radius: 3px;
         }
 
+        /* Inhalt-Design */
         .content {
             max-width: 1200px;
+            margin: 150px auto 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .rounded-block {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.3) 100%
+            );
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rounded-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .block-graphic {
+            height: 180px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+        }
+
+        .block-content h2 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .block-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .block-link {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .block-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Fußzeile-Design */
+        .footer {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.3) 100%
+            );
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        @media (max-width: 992px) {
-            .pill-header {
-                width: 40%;
-            }
+        .footer-logo {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #6366f1;
+        }
+
+        .footer-copyright {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Mobile-Optimierung */
         @media (max-width: 768px) {
             .pill-header {
                 width: 95%;
@@ -110,91 +211,89 @@
                 transform: translateX(0);
                 padding: 15px 20px;
                 border-radius: 0 50px 50px 0;
-                overflow: hidden;
             }
-            
-            .pill-header::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 10px;
-                height: 100%;
-                background: linear-gradient(to right, #f0f2f5, transparent);
-                z-index: -1;
-            }
-            
-            .pill-header::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 20px;
-                height: 100%;
-                background: radial-gradient(circle at 0 50%, transparent 30%, #f0f2f5 70%);
-                z-index: -1;
-            }
-            
-            .nav-tab {
-                padding: 10px 15px;
-                font-size: 16px;
-            }
-            
-            .nav-tabs {
-                padding-bottom: 10px;
-            }
-        }
 
-        .tab-content {
-            display: none;
-        }
+            .content {
+                margin-top: 100px;
+                grid-template-columns: 1fr;
+            }
 
-        .tab-content.active {
-            display: block;
+            .footer {
+                border-radius: 0 0 20px 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="pill-header">
         <nav class="nav-tabs">
             <button class="nav-tab active" onclick="switchTab(this, 'team')">Team</button>
             <button class="nav-tab" onclick="switchTab(this, 'contact')">Kontakt</button>
             <button class="nav-tab" onclick="switchTab(this, 'services')">Services</button>
             <button class="nav-tab" onclick="switchTab(this, 'about')">Über uns</button>
-            <button class="nav-tab" onclick="switchTab(this, 'careers')">Karriere</button>
-            <button class="nav-tab" onclick="switchTab(this, 'blog')">Blog</button>
-            <button class="nav-tab" onclick="switchTab(this, 'faq')">Häufig gestellte Fragen</button>
         </nav>
     </header>
 
+    <!-- Inhalt -->
     <div class="content">
-        <div id="team" class="tab-content active">
-            <h1>Unser Team</h1>
-            <p>Informationen über unser Team...</p>
+        <div class="rounded-block">
+            <div class="block-graphic">[Graphic Placeholder]</div>
+            <div class="block-content">
+                <h2>Unser Team</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
+                <a href="#" class="block-link">Mehr erfahren →</a>
+            </div>
         </div>
-        <div id="contact" class="tab-content">
-            <h1>Kontaktieren Sie uns</h1>
-            <p>Informationen über unseren Kontakt...</p>
+
+        <div class="rounded-block">
+            <div class="block-graphic">[Graphic Placeholder]</div>
+            <div class="block-content">
+                <h2>Kontaktieren Sie uns</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
+                <a href="#" class="block-link">Jetzt kontaktieren →</a>
+            </div>
         </div>
-        <!-- Additional tab contents -->
+
+        <div class="rounded-block">
+            <div class="block-graphic">[Graphic Placeholder]</div>
+            <div class="block-content">
+                <h2>Unsere Services</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
+                <a href="#" class="block-link">Services anzeigen →</a>
+            </div>
+        </div>
     </div>
+
+    <!-- Fußzeile -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Logo</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Impressum</a>
+                <a href="#" class="footer-link">Datenschutz</a>
+                <a href="#" class="footer-link">AGB</a>
+            </div>
+            <div class="footer-copyright">© 2023 Ihre Firma. Alle Rechte vorbehalten.</div>
+        </div>
+    </footer>
 
     <script>
         function switchTab(button, tabId) {
-            // Remove active class from all tabs
+            // Entferne die active-Klasse von allen Tabs
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
 
-            // Add active class to selected tab
+            // Füge die active-Klasse zum ausgewählten Tab hinzu
             button.classList.add('active');
 
-            // Hide all tab contents
+            // Verstecke alle Tab-Inhalte
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
 
-            // Show selected tab content
+            // Zeige den ausgewählten Tab-Inhalt
             document.getElementById(tabId).classList.add('active');
         }
     </script>
