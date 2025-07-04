@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modernes, adaptive Website-Design</title>
+    <title>Glassmorphism Landing Page</title>
     <style>
-        /* Allgemeine Einstellungen */
+        :root {
+            --glass-color: rgba(255, 255, 255, 0.7);
+            --primary-color: #6c63ff;
+            --accent-color: #f72585;
+            --text-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,287 +21,259 @@
         }
 
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            padding: 0 20px;
-            padding-top: 100px;
         }
 
-        /* Header-Design */
-              .pill-header {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 1200px;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.3) 100%
-            );
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+        /*玻璃質感標題區域*/
+        .glass-header {
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 30px;
+            padding: 20px 40px;
+            margin: 20px 5%;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .tab {
             padding: 15px 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 20px;
-            position: relative;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .nav-tab {
-            padding: 10px 20px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #333;
-            text-decoration: none;
-            background: transparent;
-            border: none;
             cursor: pointer;
-            position: relative;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
-            z-index: 2;
         }
 
-        .nav-tab.active {
-            color: #333;
+        .tab.active {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
         }
 
-        .active-pill {
-            position: absolute;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            z-index: 1;
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
         }
 
-        /* Inhalt-Design */
-        .content {
-            max-width: 1200px;
-            margin: 150px auto 50px;
+        /*服務卡片區域*/
+        .section {
+            padding: 60px 5%;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--text-color);
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
-
-
-        /* Inhalt-Design */
-        .content {
-            max-width: 1200px;
-            margin: 150px auto 50px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .rounded-block {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.3) 100%
-            );
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+        .service-card {
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
+            height: 250px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        .rounded-block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .service-card:hover {
+            transform: translateY(-10px);
         }
 
-        .block-graphic {
-            height: 180px;
-            background-color: rgba(255, 255, 255, 0.2);
+        /*團隊成員區域*/
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(0, 0, 0, 0.3);
-            font-size: 24px;
-        }
-
-        .block-content h2 {
-            margin-bottom: 15px;
-            font-size: 22px;
-            color: #333;
-        }
-
-        .block-content p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .block-link {
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .block-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Fußzeile-Design */
-        .footer {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.3) 100%
-            );
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 50px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            height: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        .footer-content {
-            max-width: 1200px;
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        /*聯絡表單區域*/
+        .contact-form {
+            max-width: 600px;
             margin: 0 auto;
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        .footer-logo {
-            margin-bottom: 20px;
-            font-size: 24px;
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
+        button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
         }
 
-        .footer-link {
-            color: #666;
-            text-decoration: none;
-        }
-
-        .footer-link:hover {
-            color: #6366f1;
-        }
-
-        .footer-copyright {
-            color: #999;
-            font-size: 14px;
-        }
-
-        /* Mobile-Optimierung */
         @media (max-width: 768px) {
-            .pill-header {
-                width: 95%;
-                padding: 12px 20px;
-                border-radius: 0 30px 30px 0;
-            }
-
-            .nav-tab {
-                padding: 8px 15px;
-                font-size: 14px;
+            .services-grid, .team-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-   <header class="pill-header">
-        <nav class="nav-tabs">
-            <button class="nav-tab active" data-target="team">Team</button>
-            <button class="nav-tab" data-target="contact">Kontakt</button>
-            <button class="nav-tab" data-target="services">Services</button>
-            <button class="nav-tab" data-target="about">Über uns</button>
-            <div class="active-pill" style="width: 70px; left: 30px;"></div>
-        </nav>
-    </header>
+    <!-- 帶有玻璃質感的標題區域 -->
+    <nav class="glass-header">
+        <ul class="tabs">
+            <li class="tab active" data-target="services">Dienstleistung</li>
+            <li class="tab" data-target="team">Team</li>
+            <li class="tab" data-target="contact">Kontakt</li>
+        </ul>
+    </nav>
 
-    <!-- Inhalt -->
-    <div class="content">
-        <div class="rounded-block">
-            <div class="block-graphic">[Graphic Placeholder]</div>
-            <div class="block-content">
-                <h2>Unser Team</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
-                <a href="#" class="block-link">Mehr erfahren →</a>
+    <!-- 服務區塊 -->
+    <section id="services" class="section">
+        <h2 class="section-title">Unsere Dienstleistungen</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Design</h3>
+                <p>Modernes und benutzerfreundliches Design für Ihre Website</p>
+            </div>
+            <div class="service-card">
+                <h3>Entwicklung</h3>
+                <p>Professionelle Webanwendungen mit modernen Technologien</p>
+            </div>
+            <div class="service-card">
+                <h3>Marketing</h3>
+                <p>Digitaler Marketing um Ihre Marke sichtbarer zu machen</p>
+            </div>
+            <div class="service-card">
+                <h3>Support</h3>
+                <p>24/7 Kundenbetreuung und technischer Support</p>
             </div>
         </div>
+    </section>
 
-        <div class="rounded-block">
-            <div class="block-graphic">[Graphic Placeholder]</div>
-            <div class="block-content">
-                <h2>Kontaktieren Sie uns</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
-                <a href="#" class="block-link">Jetzt kontaktieren →</a>
+    <!-- 團隊區域 -->
+    <section id="team" class="section">
+        <h2 class="section-title">Unser Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="team1.jpg" alt="Team Member">
+                <h3>Max Mustermann</h3>
+                <p>Chef-Designer</p>
+            </div>
+            <div class="team-card">
+                <img src="team2.jpg" alt="Team Member">
+                <h3>Sarah Müller</h3>
+                <p>Entwicklerin</p>
+            </div>
+            <div class="team-card">
+                <img src="team3.jpg" alt="Team Member">
+                <h3>Andreas Schneider</h3>
+                <p>Marketing</p>
+            </div>
+            <div class="team-card">
+                <img src="team4.jpg" alt="Team Member">
+                <h3>Lisa Weber</h3>
+                <p>Support</p>
             </div>
         </div>
+    </section>
 
-        <div class="rounded-block">
-            <div class="block-graphic">[Graphic Placeholder]</div>
-            <div class="block-content">
-                <h2>Unsere Services</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl sit amet nisl.</p>
-                <a href="#" class="block-link">Services anzeigen →</a>
+    <!-- 聯絡區域 -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Kontaktieren Sie uns</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Name" required>
             </div>
-        </div>
-    </div>
-
-    <!-- Fußzeile -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">Logo</div>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Impressum</a>
-                <a href="#" class="footer-link">Datenschutz</a>
-                <a href="#" class="footer-link">AGB</a>
+            <div class="form-group">
+                <input type="email" placeholder="E-Mail" required>
             </div>
-            <div class="footer-copyright">© 2023 Ihre Firma. Alle Rechte vorbehalten.</div>
-        </div>
-    </footer>
+            <div class="form-group">
+                <textarea rows="5" placeholder="Nachricht" required></textarea>
+            </div>
+            <button type="submit">Absenden</button>
+        </form>
+    </section>
 
-   <script>
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Entferne active-Klasse von allen Tabs
-                document.querySelectorAll('.nav-tab').forEach(t => {
-                    t.classList.remove('active');
+    <script>
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有active class
+                tabs.forEach(t => t.classList.remove('active'));
+                // 添加active class到當前tab
+                tab.classList.add('active');
+                
+                // 滾動到對應區塊
+                const targetId = tab.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 120,
+                    behavior: 'smooth'
                 });
-
-                // Füge active-Klasse zum ausgewählten Tab hinzu
-                this.classList.add('active');
-
-                // Aktualisiere die Position der aktivierten Pille
-                const pill = document.querySelector('.active-pill');
-                pill.style.width = `${this.offsetWidth + 10}px`;
-                pill.style.left = `${this.offsetLeft - 5}px`;
             });
         });
     </script>
