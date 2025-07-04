@@ -22,13 +22,13 @@
         }
 
         /* Header-Design */
-              .pill-header {
+               .pill-header {
             position: fixed;
-            top: 40px;
+            top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 25%;
-            max-width: 400px;
+            width: 90%;
+            max-width: 1200px;
             background: linear-gradient(
                 135deg,
                 rgba(255, 255, 255, 0.1) 0%,
@@ -36,9 +36,9 @@
             );
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-radius: 50px;
-            padding: 20px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 30px;
+            padding: 15px 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             z-index: 1000;
             display: flex;
             justify-content: center;
@@ -54,8 +54,8 @@
         }
 
         .nav-tab {
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 15px;
             font-weight: 500;
             color: #333;
             text-decoration: none;
@@ -77,13 +77,14 @@
         .nav-tab.active::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -3px;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background: #6366f1;
             border-radius: 3px;
         }
+
 
         /* Inhalt-Design */
         .content {
@@ -204,17 +205,14 @@
 
         /* Mobile-Optimierung */
         @media (max-width: 768px) {
-           .pill-header {
+            .pill-header {
                 width: 95%;
-                top: 20px;
-                left: 0;
-                transform: translateX(0);
-                padding: 15px 20px;
-                border-radius: 0 50px 50px 0;
+                padding: 12px 20px;
+                border-radius: 0 30px 30px 0;
             }
 
             .nav-tab {
-                padding: 10px 15px;
+                padding: 8px 15px;
                 font-size: 14px;
             }
         }
