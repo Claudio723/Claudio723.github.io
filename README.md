@@ -7,7 +7,7 @@
     <style>
         :root {
             --glass-color: rgba(255, 255, 255, 0.7);
-            --primary-color: #6c63ff;
+            --primary-color: #222222; /* Near black color */
             --text-color: #333;
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        /* Header with perfectly width-adjusted tabs */
+        /* Header with pill-shaped design */
         .glass-header {
             position: fixed;
             top: 30px;
@@ -46,14 +46,18 @@
 
         .tab-container {
             display: flex;
+            background-color: transparent;
+            border-radius: 25px;
+            overflow: hidden;
             width: 100%;
             max-width: 600px;
         }
 
         .tab {
             flex: 1;
-            background-color: transparent;
-            border-radius: 25px;
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
+            border-radius: 0;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 16px;
@@ -62,6 +66,7 @@
             transition: all 0.3s ease;
             text-align: center;
             border: none;
+            margin: 0 2px;
         }
 
         .tab.active {
@@ -290,7 +295,7 @@
         }
 
         button:hover {
-            background-color: #f72585;
+            background-color: #111111;
             transform: scale(1.05);
         }
 
