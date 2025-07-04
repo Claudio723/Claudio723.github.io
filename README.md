@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        /* 固定的藥丸形標題區域 */
+        /* Header with perfectly width-adjusted tabs */
         .glass-header {
             position: fixed;
             top: 30px;
@@ -40,23 +40,27 @@
             z-index: 1000;
             box-shadow: 0 5px 20px var(--shadow-color);
             border: 1px solid rgba(255, 255, 255, 0.18);
+            display: flex;
+            justify-content: center;
         }
 
         .tab-container {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            width: 100%;
+            max-width: 600px;
         }
 
         .tab {
+            flex: 1;
             background-color: transparent;
             border-radius: 25px;
-            padding: 10px 25px;
+            padding: 10px 15px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 500;
             color: var(--text-color);
             transition: all 0.3s ease;
+            text-align: center;
             border: none;
         }
 
@@ -69,7 +73,7 @@
             transform: translateY(-3px);
         }
 
-        /* 主要內容區域样式調整 */
+        /* Main content area style adjustments */
         .section {
             padding: 100px 5% 80px;
             scroll-margin-top: 100px;
@@ -94,6 +98,7 @@
             box-shadow: 0 10px 30px var(--shadow-color);
             border: 1px solid rgba(255, 255, 255, 0.18);
             overflow: hidden;
+            position: relative;
         }
 
         .service-title-card h2 {
@@ -108,7 +113,60 @@
             max-width: 800px;
         }
 
-        /* 更寬的服務卡片 */
+        /* Image Slider */
+        .image-slider {
+            margin-top: 30px;
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slider-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Wider service cards */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -166,7 +224,7 @@
             color: var(--primary-color);
         }
 
-        /* 團隊成員區域 */
+        /* Team members area */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -192,7 +250,7 @@
             margin-bottom: 15px;
         }
 
-        /* 聯絡表單區域 */
+        /* Contact form area */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -250,7 +308,7 @@
     </style>
 </head>
 <body>
-    <!-- 固定的藥丸形標題區域 -->
+    <!-- Fixed pill-shaped header -->
     <nav class="glass-header">
         <div class="tab-container">
             <div class="tab active" data-target="services">Dienstleistung</div>
@@ -259,11 +317,29 @@
         </div>
     </nav>
 
-    <!-- 服務區塊 -->
+    <!-- Services section -->
     <section id="services" class="section">
         <div class="service-title-card">
             <h2>Unsere Dienstleistungen</h2>
             <p>Wir bieten moderne, benutzerfreundliche Lösungen für Ihre digitale Präsence. Unsere Dienstleistungen sind auf Ihre individuellen Bedürfnisse zugeschnitten.</p>
+            
+            <!-- Image slider -->
+            <div class="image-slider">
+                <div class="slide active" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+1');">
+                    <div class="slider-description">Schritt 1: Laden Sie Ihre Bilder herunter und speichern Sie sie lokal</div>
+                </div>
+                <div class="slide" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+2');">
+                    <div class="slider-description">Schritt 2: Laden Sie die Bilder in Ihr GitHub-Repository hoch</div>
+                </div>
+                <div class="slide" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+3');">
+                    <div class="slider-description">Schritt 3: Aktualisieren Sie die Bild-URLs in Ihrem Code</div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <span class="slider-dot active" onclick="currentSlide(0)"></span>
+                <span class="slider-dot" onclick="currentSlide(1)"></span>
+                <span class="slider-dot" onclick="currentSlide(2)"></span>
+            </div>
         </div>
         <div class="services-grid">
             <div class="service-card">
@@ -332,34 +408,34 @@
         </div>
     </section>
 
-    <!-- 團隊區域 -->
+    <!-- Team section -->
     <section id="team" class="section">
         <h2 class="section-title">Unser Team</h2>
         <div class="team-grid">
             <div class="team-card">
-                <img src="team1.jpg" alt="Team Member">
+                <img src="https://via.placeholder.com/150?text=Team+1" alt="Team Member">
                 <h3>Max Mustermann</h3>
                 <p>Chef-Designer</p>
             </div>
             <div class="team-card">
-                <img src="team2.jpg" alt="Team Member">
+                <img src="https://via.placeholder.com/150?text=Team+2" alt="Team Member">
                 <h3>Sarah Müller</h3>
                 <p>Entwicklerin</p>
             </div>
             <div class="team-card">
-                <img src="team3.jpg" alt="Team Member">
+                <img src="https://via.placeholder.com/150?text=Team+3" alt="Team Member">
                 <h3>Andreas Schneider</h3>
                 <p>Marketing</p>
             </div>
             <div class="team-card">
-                <img src="team4.jpg" alt="Team Member">
+                <img src="https://via.placeholder.com/150?text=Team+4" alt="Team Member">
                 <h3>Lisa Weber</h3>
                 <p>Support</p>
             </div>
         </div>
     </section>
 
-    <!-- 聯絡區域 -->
+    <!-- Contact section -->
     <section id="contact" class="section">
         <h2 class="section-title">Kontaktieren Sie uns</h2>
         <form class="contact-form">
@@ -382,12 +458,12 @@
         
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // 移除所有active class
+                // Remove all active classes
                 tabs.forEach(t => t.classList.remove('active'));
-                // 添加active class到當前tab
+                // Add active class to current tab
                 tab.classList.add('active');
                 
-                // 滾動到對應區塊
+                // Scroll to corresponding section
                 const targetId = tab.getAttribute('data-target');
                 const targetElement = document.getElementById(targetId);
                 window.scrollTo({
@@ -396,6 +472,30 @@
                 });
             });
         });
+
+        // Image Slider Functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(n) {
+            slideIndex = n;
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            showSlide(n);
+        }
+
+        // Automatically change slide every 5 seconds
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }, 5000);
     </script>
 </body>
 </html>
