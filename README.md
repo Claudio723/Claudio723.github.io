@@ -22,68 +22,68 @@
         }
 
         /* Header-Design */
-       .pill-header {
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25%;
-    max-width: 400px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.3) 100%
-    );
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 50px;
-    padding: 20px 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
+              .pill-header {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25%;
+            max-width: 400px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.3) 100%
+            );
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 20px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-.nav-tabs {
-    display: flex;
-    gap: 20px;
-    position: relative;
-    justify-content: center;
-    width: 100%;
-}
+        .nav-tabs {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            justify-content: center;
+            width: 100%;
+        }
 
-.nav-tab {
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-}
+        .nav-tab {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.nav-tab:hover {
-    color: #6366f1;
-}
+        .nav-tab:hover {
+            color: #6366f1;
+        }
 
-.nav-tab.active {
-    color: #6366f1;
-}
+        .nav-tab.active {
+            color: #6366f1;
+        }
 
-.nav-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: #6366f1;
-    border-radius: 3px;
-}
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #6366f1;
+            border-radius: 3px;
+        }
 
         /* Inhalt-Design */
         .content {
@@ -204,7 +204,7 @@
 
         /* Mobile-Optimierung */
         @media (max-width: 768px) {
-            .pill-header {
+           .pill-header {
                 width: 95%;
                 top: 20px;
                 left: 0;
@@ -213,27 +213,23 @@
                 border-radius: 0 50px 50px 0;
             }
 
-            .content {
-                margin-top: 100px;
-                grid-template-columns: 1fr;
-            }
-
-            .footer {
-                border-radius: 0 0 20px 20px;
+            .nav-tab {
+                padding: 10px 15px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-   <header class="pill-header">
-    <nav class="nav-tabs">
-        <button class="nav-tab active" onclick="switchTab(this, 'team')">Team</button>
-        <button class="nav-tab" onclick="switchTab(this, 'contact')">Kontakt</button>
-        <button class="nav-tab" onclick="switchTab(this, 'services')">Services</button>
-        <button class="nav-tab" onclick="switchTab(this, 'about')">Über uns</button>
-    </nav>
-</header>
+  <header class="pill-header">
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab(this, 'team')">Team</button>
+            <button class="nav-tab" onclick="switchTab(this, 'contact')">Kontakt</button>
+            <button class="nav-tab" onclick="switchTab(this, 'services')">Services</button>
+            <button class="nav-tab" onclick="switchTab(this, 'about')">Über uns</button>
+        </nav>
+    </header>
 
     <!-- Inhalt -->
     <div class="content">
