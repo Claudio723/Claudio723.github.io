@@ -28,34 +28,36 @@
         .glass-header {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 0;
-            z-index: 1000;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background-color: var(--glass-color);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .tab-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .tab {
-            background-color: var(--glass-color);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 12px 30px;
+            background-color: transparent;
+            border-radius: 25px;
+            padding: 10px 25px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 500;
             color: var(--text-color);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 5px 15px var(--shadow-color);
+            border: none;
         }
 
         .tab.active {
@@ -65,7 +67,6 @@
 
         .tab:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px var(--shadow-color);
         }
 
         /* 主要內容區域样式調整 */
@@ -81,10 +82,10 @@
             color: var(--text-color);
         }
 
-        /* 更大且帶圖標的服務卡片 */
+        /* 更寬的服務卡片 */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
@@ -94,9 +95,6 @@
             border-radius: 25px;
             padding: 40px 30px;
             min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
             box-shadow: 0 15px 35px var(--shadow-color);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -104,24 +102,8 @@
             overflow: hidden;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(to right, transparent, rgba(108, 99, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            transform: rotate(45deg) translate(20%, 20%);
-        }
-
         .service-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px var(--shadow-color);
         }
 
@@ -229,7 +211,10 @@
         }
 
         @media (max-width: 768px) {
-            .services-grid, .team-grid {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .section {
@@ -311,27 +296,6 @@
                         <div class="feature-item">
                             <span class="feature-icon">✓</span>
                             <span>Content Creation</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📞</div>
-                <div class="service-content">
-                    <h3>Support</h3>
-                    <p class="service-description">24/7 Kundenbetreuung und technischer Support</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <span class="feature-icon">✓</span>
-                            <span>Live-Chat</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">✓</span>
-                            <span>Ticket-System</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">✓</span>
-                            <span>Wartung</span>
                         </div>
                     </div>
                 </div>
