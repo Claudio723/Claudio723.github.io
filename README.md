@@ -19,15 +19,16 @@
             display: grid;
             grid-template-rows: auto 1fr auto;
             padding: 0 20px;
+            padding-top: 100px;
         }
 
         /* Header-Design */
-               .pill-header {
+              .pill-header {
             position: fixed;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             background: linear-gradient(
                 135deg,
@@ -78,6 +79,16 @@
             border-radius: 15px;
             transition: all 0.3s ease;
             z-index: 1;
+        }
+
+        /* Inhalt-Design */
+        .content {
+            max-width: 1200px;
+            margin: 150px auto 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
         }
 
 
