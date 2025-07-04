@@ -25,84 +25,115 @@
             min-height: 100vh;
         }
 
-        /*玻璃質感標題區域*/
+        /* 固定的藥丸形標題區域 */
         .glass-header {
-            background-color: var(--glass-color);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background-color: transparent;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 20px 40px;
-            margin: 20px 5%;
-            box-shadow: 0 8px 32px var(--shadow-color);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            z-index: 1000;
+            padding: 15px 0;
         }
 
-        .tabs {
+        .tab-container {
             display: flex;
-            justify-content: space-around;
-            list-style: none;
+            justify-content: center;
+            gap: 20px;
         }
 
         .tab {
-            padding: 15px 30px;
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 12px 30px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             color: var(--text-color);
-            border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
 
         .tab.active {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .tab:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow-color);
         }
 
-        /*服務卡片區域*/
+        /* 主要內容區域样式調整 */
         .section {
-            padding: 60px 5%;
+            padding: 120px 5% 80px;
             scroll-margin-top: 100px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-size: 2.5rem;
             color: var(--text-color);
         }
 
+        /* 更大且帶圖標的服務卡片 */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 30px;
         }
 
         .service-card {
             background-color: var(--glass-color);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            height: 250px;
+            border-radius: 25px;
+            padding: 40px 30px;
+            height: 300px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px var(--shadow-color);
+            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(108, 99, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            transform: rotate(45deg) translate(20%, 20%);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px var(--shadow-color);
         }
 
-        /*團隊成員區域*/
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        /* 團隊成員區域 */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -128,7 +159,7 @@
             margin-bottom: 15px;
         }
 
-        /*聯絡表單區域*/
+        /* 聯絡表單區域 */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -136,7 +167,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px var(--shadow-color);
+            box-shadow: 0 15px 35px var(--shadow-color);
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
@@ -176,17 +207,20 @@
             .services-grid, .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .section {
+                padding: 140px 5% 80px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 帶有玻璃質感的標題區域 -->
+    <!-- 固定的藥丸形標題區域 -->
     <nav class="glass-header">
-        <ul class="tabs">
-            <li class="tab active" data-target="services">Dienstleistung</li>
-            <li class="tab" data-target="team">Team</li>
-            <li class="tab" data-target="contact">Kontakt</li>
-        </ul>
+        <div class="tab-container">
+            <div class="tab active" data-target="services">Dienstleistung</div>
+            <div class="tab" data-target="team">Team</div>
+            <div class="tab" data-target="contact">Kontakt</div>
+        </div>
     </nav>
 
     <!-- 服務區塊 -->
@@ -194,18 +228,22 @@
         <h2 class="section-title">Unsere Dienstleistungen</h2>
         <div class="services-grid">
             <div class="service-card">
+                <div class="service-icon">🎨</div>
                 <h3>Design</h3>
                 <p>Modernes und benutzerfreundliches Design für Ihre Website</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">💻</div>
                 <h3>Entwicklung</h3>
                 <p>Professionelle Webanwendungen mit modernen Technologien</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">📈</div>
                 <h3>Marketing</h3>
                 <p>Digitaler Marketing um Ihre Marke sichtbarer zu machen</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">📞</div>
                 <h3>Support</h3>
                 <p>24/7 Kundenbetreuung und technischer Support</p>
             </div>
@@ -271,7 +309,7 @@
                 const targetId = tab.getAttribute('data-target');
                 const targetElement = document.getElementById(targetId);
                 window.scrollTo({
-                    top: targetElement.offsetTop - 120,
+                    top: targetElement.offsetTop - 90,
                     behavior: 'smooth'
                 });
             });
