@@ -20,18 +20,18 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: #f5f5f7;
             min-height: 100vh;
         }
 
         /* 固定的藥丸形標題區域 */
         .glass-header {
             position: fixed;
-            top: 0;
+            top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
+            width: 85%;
+            max-width: 1000px;
             background-color: var(--glass-color);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -71,8 +71,10 @@
 
         /* 主要內容區域样式調整 */
         .section {
-            padding: 120px 5% 80px;
+            padding: 100px 5% 80px;
             scroll-margin-top: 100px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .section-title {
@@ -80,6 +82,30 @@
             margin-bottom: 60px;
             font-size: 2.5rem;
             color: var(--text-color);
+        }
+
+        /* Services Title Card */
+        .service-title-card {
+            background-color: var(--glass-color);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            overflow: hidden;
+        }
+
+        .service-title-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .service-title-card p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
         }
 
         /* 更寬的服務卡片 */
@@ -235,7 +261,10 @@
 
     <!-- 服務區塊 -->
     <section id="services" class="section">
-        <h2 class="section-title">Unsere Dienstleistungen</h2>
+        <div class="service-title-card">
+            <h2>Unsere Dienstleistungen</h2>
+            <p>Wir bieten moderne, benutzerfreundliche Lösungen für Ihre digitale Präsence. Unsere Dienstleistungen sind auf Ihre individuellen Bedürfnisse zugeschnitten.</p>
+        </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🎨</div>
