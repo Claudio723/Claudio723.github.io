@@ -8,7 +8,6 @@
         :root {
             --glass-color: rgba(255, 255, 255, 0.7);
             --primary-color: #6c63ff;
-            --accent-color: #f72585;
             --text-color: #333;
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
@@ -29,21 +28,20 @@
         .glass-header {
             position: fixed;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
-            background-color: transparent;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
         }
 
         .tab-container {
             display: flex;
             justify-content: center;
             gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .tab {
@@ -95,10 +93,10 @@
             backdrop-filter: blur(10px);
             border-radius: 25px;
             padding: 40px 30px;
-            height: 300px;
+            min-height: 350px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             box-shadow: 0 15px 35px var(--shadow-color);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -130,6 +128,33 @@
         .service-icon {
             font-size: 3rem;
             margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .service-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .service-description {
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-icon {
             color: var(--primary-color);
         }
 
@@ -199,7 +224,7 @@
         }
 
         button:hover {
-            background-color: var(--accent-color);
+            background-color: #f72585;
             transform: scale(1.05);
         }
 
@@ -229,23 +254,87 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🎨</div>
-                <h3>Design</h3>
-                <p>Modernes und benutzerfreundliches Design für Ihre Website</p>
+                <div class="service-content">
+                    <h3>Design</h3>
+                    <p class="service-description">Modernes und benutzerfreundliches Design für Ihre Website</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Benutzerzentrierte UI</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Kreatives Konzept</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">💻</div>
-                <h3>Entwicklung</h3>
-                <p>Professionelle Webanwendungen mit modernen Technologien</p>
+                <div class="service-content">
+                    <h3>Entwicklung</h3>
+                    <p class="service-description">Professionelle Webanwendungen mit modernen Technologien</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Frontend & Backend</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Frameworks & Libraries</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Optimierung</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">📈</div>
-                <h3>Marketing</h3>
-                <p>Digitaler Marketing um Ihre Marke sichtbarer zu machen</p>
+                <div class="service-content">
+                    <h3>Marketing</h3>
+                    <p class="service-description">Digitaler Marketing um Ihre Marke sichtbarer zu machen</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>SEO & SEM</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Social Media</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Content Creation</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">📞</div>
-                <h3>Support</h3>
-                <p>24/7 Kundenbetreuung und technischer Support</p>
+                <div class="service-content">
+                    <h3>Support</h3>
+                    <p class="service-description">24/7 Kundenbetreuung und technischer Support</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Live-Chat</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Ticket-System</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Wartung</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
