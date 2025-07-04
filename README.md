@@ -64,26 +64,22 @@
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease;
-        }
-
-        .nav-tab:hover {
-            color: #6366f1;
+            z-index: 2;
         }
 
         .nav-tab.active {
-            color: #6366f1;
+            color: #333;
         }
 
-        .nav-tab.active::after {
-            content: '';
+        .active-pill {
             position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #6366f1;
-            border-radius: 3px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            z-index: 1;
         }
+
 
 
         /* Inhalt-Design */
@@ -220,12 +216,13 @@
 </head>
 <body>
     <!-- Header -->
-  <header class="pill-header">
+   <header class="pill-header">
         <nav class="nav-tabs">
-            <button class="nav-tab active" onclick="switchTab(this, 'team')">Team</button>
-            <button class="nav-tab" onclick="switchTab(this, 'contact')">Kontakt</button>
-            <button class="nav-tab" onclick="switchTab(this, 'services')">Services</button>
-            <button class="nav-tab" onclick="switchTab(this, 'about')">Über uns</button>
+            <button class="nav-tab active" data-target="team">Team</button>
+            <button class="nav-tab" data-target="contact">Kontakt</button>
+            <button class="nav-tab" data-target="services">Services</button>
+            <button class="nav-tab" data-target="about">Über uns</button>
+            <div class="active-pill" style="width: 70px; left: 30px;"></div>
         </nav>
     </header>
 
@@ -272,24 +269,23 @@
         </div>
     </footer>
 
-    <script>
-        function switchTab(button, tabId) {
-            // Entferne die active-Klasse von allen Tabs
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
+   <script>
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Entferne active-Klasse von allen Tabs
+                document.querySelectorAll('.nav-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+
+                // Füge active-Klasse zum ausgewählten Tab hinzu
+                this.classList.add('active');
+
+                // Aktualisiere die Position der aktivierten Pille
+                const pill = document.querySelector('.active-pill');
+                pill.style.width = `${this.offsetWidth + 10}px`;
+                pill.style.left = `${this.offsetLeft - 5}px`;
             });
-
-            // Füge die active-Klasse zum ausgewählten Tab hinzu
-            button.classList.add('active');
-
-            // Verstecke alle Tab-Inhalte
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Zeige den ausgewählten Tab-Inhalt
-            document.getElementById(tabId).classList.add('active');
-        }
+        });
     </script>
 </body>
 </html>
