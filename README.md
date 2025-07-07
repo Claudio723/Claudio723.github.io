@@ -328,7 +328,7 @@
             
             <!-- Image slider -->
             <div class="image-slider">
-                <div class="slide active" style="background-image: url('Claudio723.github.io/steve-johnson-yaUls_oyvug-unsplash.jpg');">
+                <div class="slide active" style="background-image: url('https://github.com/Claudio723/Claudio723.github.io/blob/main/steve-johnson-yaUls_oyvug-unsplash.jpg');">
                     <div class="slider-description">Schritt 1: Laden Sie Ihre Bilder herunter und speichern Sie sie lokal</div>
                 </div>
                 <div class="slide" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+2');">
