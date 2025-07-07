@@ -1,0 +1,23 @@
+{
+  "name": "glassmorphism-landing-page",
+  "version": "1.0.0",
+  "description": "A modern glassmorphism landing page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -s . -l 3000",
+    "build": "echo 'Build complete - static files ready'",
+    "start": "npx serve -s . -l 3000"
+  },
+  "keywords": [
+    "glassmorphism",
+    "landing-page",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
