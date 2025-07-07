@@ -326,15 +326,18 @@
             <h2>Unsere Dienstleistungen</h2>
             <p>Wir bieten moderne, benutzerfreundliche Lösungen für Ihre digitale Präsence. Unsere Dienstleistungen sind auf Ihre individuellen Bedürfnisse zugeschnitten.</p>
             
-            <!-- Image slider -->
+            <!-- Full-screen Image slider -->
             <div class="image-slider">
-                <div class="slide active" style="background-image: url('steve-johnson-yaUls_oyvug-unsplash.jpg');">
+                <div class="slide active">
+                    <img src="https://github.com/Claudio723/Claudio723.github.io/blob/main/steve-johnson-yaUls_oyvug-unsplash.jpg" alt="Slide 1" style="width:100%; height:100%; object-fit:cover;">
                     <div class="slider-description">Schritt 1: Laden Sie Ihre Bilder herunter und speichern Sie sie lokal</div>
                 </div>
-                <div class="slide" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+2');">
+                <div class="slide">
+                    <img src="https://via.placeholder.com/800x400?text=Bild+2" alt="Slide 2" style="width:100%; height:100%; object-fit:cover;">
                     <div class="slider-description">Schritt 2: Laden Sie die Bilder in Ihr GitHub-Repository hoch</div>
                 </div>
-                <div class="slide" style="background-image: url('https://via.placeholder.com/800x400?text=Bild+3');">
+                <div class="slide">
+                    <img src="https://via.placeholder.com/800x400?text=Bild+3" alt="Slide 3" style="width:100%; height:100%; object-fit:cover;">
                     <div class="slider-description">Schritt 3: Aktualisieren Sie die Bild-URLs in Ihrem Code</div>
                 </div>
             </div>
