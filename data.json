@@ -1,0 +1,35 @@
+{
+  "wissen": [
+    {
+      "title": "Phishing & Social Engineering",
+      "description": "Erfahre, wie Angreifer täuschen. Beispiel: Verwende code_execution, um ein Python-Skript zu simulieren: import re; pattern = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b';",
+      "icon": "fa-shield-alt"
+    },
+    {
+      "title": "Encryption & Daten-Sicherheit",
+      "description": "Schütze Daten schweizweit. Mit sympy: Löse Gleichungen für kryptografische Algorithmen.",
+      "icon": "fa-lock"
+    },
+    {
+      "title": "xAI-Tools für Security",
+      "description": "Nutze web_search für Threat-Intel oder x_semantic_search für X-Posts zu aktuellen Bedrohungen.",
+      "icon": "fa-tools"
+    }
+  ],
+  "tools": [
+    {
+      "title": "Code Execution",
+      "description": "Simuliere Security-Tests. Beispiel-Prompt: 'Verwende code_execution mit code: print(\"Hello Secure World\")'",
+      "snippet": "<pre><code>print('Secure!')</code></pre>"
+    },
+    {
+      "title": "Web Search",
+      "description": "Suche nach Cyber-Threats. Operatoren: site:schweiz.ch 'ransomware 2025'",
+      "snippet": "<pre><code>web_search query='Top Cyber Threats 2025'</code></pre>"
+    }
+  ],
+  "chatResponses": {
+    "Was ist Phishing?": "Phishing ist eine Methode, bei der Angreifer falsche E-Mails senden, um Daten zu stehlen. In der Schweiz betrifft das oft Banken.",
+    "Deine Tools?": "Ich habe Tools wie code_execution für Simulationen – kein Cutoff, kontinuierlich aktualisiert (Stand August 2025)."
+  }
+}

@@ -3,64 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lazote - Cyber Security Schweiz</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="custom_css_tailwind_morph_effects.css">
+  <title>Lazote - Cyber Security Aufklärung & Services Schweiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Tailwind CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+  <link rel="stylesheet" href="styles.css"> <!-- Custom CSS -->
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-  <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 pill-header glass-morph w-11/12 md:w-3/4 flex justify-between items-center px-6 py-3 shadow-lg hover-morph">
-    <a href="#" class="text-xl font-bold">Lazote</a>
-    <nav class="hidden md:flex space-x-6">
-      <a href="#home" class="hover:text-blue-500">Home</a>
-      <a href="#wissen" class="hover:text-blue-500">Dein Wissen</a>
-      <a href="#tools" class="hover:text-blue-500">Tools & Features</a>
-      <a href="#demo" class="hover:text-blue-500">Interaktive Demo</a>
-      <a href="#kontakt" class="hover:text-blue-500">Kontakt</a>
+<body class="bg-gray-100 font-sans antialiased">
+  <!-- Header: Pillenförmig mit transparentem Morph-Effekt -->
+  <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/30 backdrop-blur-md rounded-full px-6 py-3 shadow-lg transition-all duration-300 hover:shadow-xl">
+    <nav class="flex items-center justify-between space-x-4">
+      <a href="#" class="text-lg font-bold text-gray-800">Lazote</a>
+      <ul class="flex space-x-4">
+        <li><a href="#home" class="px-4 py-2 rounded-full hover:bg-gray-200 transition">Home</a></li>
+        <li><a href="#wissen" class="px-4 py-2 rounded-full hover:bg-gray-200 transition">Wissen</a></li>
+        <li><a href="#tools" class="px-4 py-2 rounded-full hover:bg-gray-200 transition">Tools</a></li>
+        <li><a href="#demo" class="px-4 py-2 rounded-full hover:bg-gray-200 transition">Demo</a></li>
+        <li><a href="#kontakt" class="px-4 py-2 rounded-full hover:bg-gray-200 transition">Kontakt</a></li>
+      </ul>
     </nav>
-    <button id="darkToggle"><i class="fas fa-moon"></i></button>
-    <button class="md:hidden" data-bs-toggle="collapse" data-bs-target="#mobileNav"><i class="fas fa-bars"></i></button>
-    <div id="mobileNav" class="collapse md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800">
-      <nav class="flex flex-col p-4"><!-- Links wie oben --></nav>
-    </div>
   </header>
 
-  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+  <!-- Hero-Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white">
     <div class="text-center">
-      <img src="placeholder-logo.png" alt="Logo" class="mx-auto mb-4 w-32 animate-bounce">
-      <h1 class="text-4xl md:text-6xl font-bold">Willkommen bei Lazote</h1>
-      <p>Basierend auf Grok 4: Cyber Security Aufklärung.</p>
-      <a href="https://grok.com" class="mt-6 inline-block bg-white text-black px-6 py-3 rounded-full">Zu grok.com</a>
+      <img src="https://via.placeholder.com/150" alt="Lazote Logo" class="mx-auto mb-4 rounded-full">
+      <h1 class="text-5xl font-bold mb-4">Willkommen bei Lazote – Deine Plattform für Cyber Security in der Schweiz</h1>
+      <p class="text-xl mb-6">Aufklärung und Services für sichere Innovationen.</p>
+      <a href="https://x.ai" class="px-6 py-3 bg-white text-blue-600 rounded-full font-bold hover:bg-gray-100 transition">Zu grok.com</a>
     </div>
   </section>
 
-  <section id="wissen" class="py-16 px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div id="wissenCards" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
-    <canvas id="xaiChart" class="col-span-3 h-64"></canvas>
-  </section>
-
-  <section id="tools" class="py-16 px-4">
-    <h2 class="text-3xl font-bold mb-8">Tools & Features</h2>
-    <div class="accordion" id="toolsAccordion"></div>
-  </section>
-
-  <section id="demo" class="py-16 px-4">
-    <h2 class="text-3xl font-bold mb-8">Interaktive Demo</h2>
-    <div class="max-w-lg mx-auto border rounded-lg p-4">
-      <div id="chatMessages" class="h-64 overflow-y-auto mb-4"></div>
-      <input id="chatInput" type="text" class="w-full p-2 border rounded" placeholder="Frage...">
-      <button id="sendChat" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-full">Senden</button>
+  <!-- Wissen-Abschnitt: Karten mit Pill-Style -->
+  <section id="wissen" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Unser Wissen zu Cyber Security</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="wissen-cards"></div> <!-- Dynamisch gefüllt via JS -->
+      <canvas id="threatChart" class="mt-8"></canvas> <!-- Chart.js Visualisierung -->
     </div>
   </section>
 
+  <!-- Tools & Features: Accordion -->
+  <section id="tools" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Tools & Features</h2>
+      <div class="accordion" id="tools-accordion"></div> <!-- Dynamisch gefüllt -->
+    </div>
+  </section>
+
+  <!-- Interaktive Demo: Chat-Interface -->
+  <section id="demo" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Interaktive Demo</h2>
+      <div class="max-w-md mx-auto bg-gray-50 p-4 rounded-lg shadow">
+        <div id="chat-output" class="h-64 overflow-y-auto mb-4 p-2 border rounded"></div>
+        <input id="chat-input" type="text" placeholder="Frage zu Cyber Security..." class="w-full p-2 border rounded mb-2">
+        <button onclick="sendChat()" class="w-full px-4 py-2 bg-blue-500 text-white rounded-full">Senden</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer id="kontakt" class="py-8 bg-gray-800 text-white text-center">
-    <p>Links: <a href="https://x.ai">x.ai</a> | <a href="https://grok.com">grok.com</a></p>
-    <p>Disclaimer: Basierend auf Grok 4 vom August 2025.</p>
+    <p>Links: <a href="https://x.ai">x.ai</a> | <a href="https://grok.com">grok.com</a> | Social: <i class="fab fa-twitter"></i></p>
+    <p>Disclaimer: Basierend auf Grok 4's Fähigkeiten vom August 2025. Kontinuierlich aktualisiert.</p>
   </footer>
 
-  <script type="module" src="scripts.js"></script>
+  <script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

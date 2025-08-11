@@ -1,48 +1,68 @@
-import { data } from './data.js';
+// Lade Data
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    // Wissen-Karten
+    const wissenContainer = document.getElementById('wissen-cards');
+    data.wissen.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card'; // Custom Class für Pill/Blur
+      card.innerHTML = `
+        <i class="fas ${item.icon} text-4xl mb-4"></i>
+        <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
+        <p>${item.description}</p>
+      `;
+      wissenContainer.appendChild(card);
+    });
 
-document.getElementById('darkToggle').addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-  localStorage.setItem('darkMode', document.documentElement.classList.contains('dark') ? 'enabled' : 'disabled');
-});
-if (localStorage.getItem('darkMode') === 'enabled') document.documentElement.classList.add('dark');
+    // Tools-Accordion (Bootstrap)
+    const toolsContainer = document.getElementById('tools-accordion');
+    data.tools.forEach((tool, index) => {
+      const item = document.createElement('div');
+      item.className = 'accordion-item';
+      item.innerHTML = `
+        <h2 class="accordion-header" id="heading${index}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}">
+            ${tool.title}
+          </button>
+        </h2>
+        <div id="collapse${index}" class="accordion-collapse collapse" data-bs-parent="#tools-accordion">
+          <div class="accordion-body">
+            ${tool.description}
+            ${tool.snippet}
+          </div>
+        </div>
+      `;
+      toolsContainer.appendChild(item);
+    });
 
-const wissenCards = document.getElementById('wissenCards');
-data.wissen.forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover-morph';
-  card.innerHTML = `<i class="fas ${item.icon} text-4xl mb-4"></i><h3 class="text-2xl">${item.title}</h3><p>${item.description}</p>`;
-  wissenCards.appendChild(card);
-});
+    // Chart.js: Visualisierung (z.B. Cyber-Threats)
+    const ctx = document.getElementById('threatChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Phishing', 'Ransomware', 'DDoS'],
+        datasets: [{ label: 'Threats 2025', data: [65, 59, 80], backgroundColor: 'rgba(54, 162, 235, 0.5)' }]
+      },
+      options: { responsive: true }
+    });
+  });
 
-const ctx = document.getElementById('xaiChart').getContext('2d');
-new Chart(ctx, {
-  type: 'bar',
-  data: { labels: ['Grok 3', 'Grok 4', 'API'], datasets: [{ label: 'Zugriffe', data: [100, 50, 30], backgroundColor: ['#3b82f6', '#ef4444', '#10b981'] }] },
-  options: { responsive: true }
-});
+// Chat-Funktion
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const output = document.getElementById('chat-output');
+  const question = input.value;
+  output.innerHTML += `<p><strong>Du:</strong> ${question}</p>`;
 
-const accordion = document.getElementById('toolsAccordion');
-data.tools.forEach((tool, i) => {
-  accordion.innerHTML += `
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading${i}">
-        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse${i}">${tool.name}</button>
-      </h2>
-      <div id="collapse${i}" class="accordion-collapse collapse">
-        <div class="accordion-body">${tool.description}<pre><code>${tool.snippet}</code></pre></div>
-      </div>
-    </div>`;
-});
+  // Simulierte Antworten (aus data.json)
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const response = data.chatResponses[question] || 'Entschuldigung, das weiß ich nicht. Frage zu Cyber Security!';
+      output.innerHTML += `<p><strong>Lazote (Grok 4):</strong> ${response}</p>`;
+      output.scrollTop = output.scrollHeight;
+    });
 
-const messages = document.getElementById('chatMessages');
-document.getElementById('sendChat').addEventListener('click', () => {
-  const input = document.getElementById('chatInput');
-  const msg = input.value;
-  if (msg) {
-    messages.innerHTML += `<p><strong>User:</strong> ${msg}</p>`;
-    const res = data.chatExamples.find(ex => msg.toLowerCase().includes(ex.question.toLowerCase()))?.answer || 'Simulierte Antwort zu Cyber Security.';
-    messages.innerHTML += `<p><strong>Grok:</strong> ${res}</p>`;
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight;
-  }
-});
+  input.value = '';
+}
