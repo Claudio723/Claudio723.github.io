@@ -1,33 +1,14 @@
-Ausgabe: "Wissenschaft & Mathematik" – Keine Fehler.
+Ausgabe: Wissenschaft & Mathematik – Erfolgreich.
 
-#### 2. custom.css (Ergänzungen zu Tailwind für Morph-Effekte)
-Tailwind handhabt die meisten Styles, aber für custom Glassmorphism (transparent morph) und Animations definieren wir hier @keyframes und Backdrop-Filter.
+#### 3. custom_css_tailwind_morph_effects.css (CSS – angepasst für Deployment)
+Tailwind-Ergänzungen; relative Pfade implizit (verlinkt in HTML).
 
 ```css
-/* Glassmorphism für Header */
-.glass-morph {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease; /* Morph-Effekt */
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Pill-Shape */
-.pill-header {
-  border-radius: 9999px; /* rounded-full in Tailwind */
-}
-
-/* Micro-Animation für Hover */
-@keyframes morph {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-.hover-morph:hover {
-  animation: morph 0.5s ease-in-out;
-}
-
-/* Dark Mode */
-.dark .glass-morph {
-  background: rgba(0, 0, 0, 0.1);
-}
+.glass-morph { @apply bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300; }
+.pill-header { @apply rounded-full; }
+.hover-morph:hover { @apply scale-105; }
+.dark .glass-morph { @apply bg-black/10; }
