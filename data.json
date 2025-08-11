@@ -7,7 +7,7 @@
     },
     {
       "title": "Encryption & Daten-Sicherheit",
-      "description": "Schütze Daten schweizweit. Mit sympy: Löse Gleichungen für kryptografische Algorithmen.",
+      "description": "Schütze Daten schweizweit. Mit sympy: Löse Gleichungen für kryptografische Algorithmen, z.B. sympy.solve(x**2 - 2, x) für RSA-Basics.",
       "icon": "fa-lock"
     },
     {
@@ -26,10 +26,16 @@
       "title": "Web Search",
       "description": "Suche nach Cyber-Threats. Operatoren: site:schweiz.ch 'ransomware 2025'",
       "snippet": "<pre><code>web_search query='Top Cyber Threats 2025'</code></pre>"
+    },
+    {
+      "title": "X Semantic Search",
+      "description": "Finde relevante X-Posts zu Security-Themen.",
+      "snippet": "<pre><code>x_semantic_search query='Cyber Security Schweiz'</code></pre>"
     }
   ],
   "chatResponses": {
     "Was ist Phishing?": "Phishing ist eine Methode, bei der Angreifer falsche E-Mails senden, um Daten zu stehlen. In der Schweiz betrifft das oft Banken.",
-    "Deine Tools?": "Ich habe Tools wie code_execution für Simulationen – kein Cutoff, kontinuierlich aktualisiert (Stand August 2025)."
+    "Deine Tools?": "Ich habe Tools wie code_execution für Simulationen – kein Cutoff, kontinuierlich aktualisiert (Stand August 2025).",
+    "Was ist dein Wissenscutoff?": "Kein Cutoff, kontinuierlich aktualisiert – basierend auf Grok 4's Fähigkeiten."
   }
 }
