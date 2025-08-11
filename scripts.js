@@ -1,5 +1,5 @@
-// Debugging Logs
-console.log('Scripts.js loaded successfully.');
+// Debugging Logs für GitHub Pages
+console.log('Scripts.js loaded successfully. Checking deployment...');
 
 // Fallback-Daten, falls data.json fehlt
 const fallbackData = {
@@ -13,19 +13,20 @@ const fallbackData = {
 };
 
 // Lade Data mit Fehlerbehandlung
-fetch('data.json')
+fetch('/data.json')
   .then(response => {
-    if (!response.ok) throw new Error('JSON nicht gefunden');
+    if (!response.ok) throw new Error('JSON nicht gefunden - Überprüfe GitHub Root-Ordner!');
     return response.json();
   })
   .then(data => {
-    console.log('Data.json loaded successfully.');
+    console.log('Data.json loaded successfully on GitHub Pages.');
     populateContent(data);
   })
   .catch(error => {
     console.error('Fehler beim Laden von data.json:', error);
-    console.log('Verwende Fallback-Daten.');
+    console.log('Verwende Fallback-Daten. Mögliche Ursache: Datei nicht im Root oder Deployment-Verzögerung.');
     populateContent(fallbackData);
+    document.body.classList.add('unstyled'); // Debugging: Markiere Body
   });
 
 // Funktion zum Befüllen der Inhalte
@@ -83,7 +84,7 @@ function sendChat() {
   const question = input.value;
   output.innerHTML += `<p><strong>Du:</strong> ${question}</p>`;
 
-  fetch('data.json')
+  fetch('/data.json')
     .then(response => response.json())
     .then(data => {
       const response = data.chatResponses[question] || 'Entschuldigung, das weiß ich nicht. Frage zu Cyber Security!';
@@ -91,7 +92,7 @@ function sendChat() {
       output.scrollTop = output.scrollHeight;
     })
     .catch(() => {
-      output.innerHTML += `<p><strong>Lazote (Grok 4):</strong> Fallback: Frage nicht gefunden.</p>`;
+      output.innerHTML += `<p><strong>Lazote (Grok 4):</strong> Fallback: Frage nicht gefunden. Check Console für Errors.</p>`;
       output.scrollTop = output.scrollHeight;
     });
 

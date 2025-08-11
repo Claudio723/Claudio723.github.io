@@ -7,6 +7,11 @@
   @apply bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300;
 }
 
+/* Debugging: Rot bei ungestylt */
+body.unstyled {
+  border: 2px solid red;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) {
   .header {

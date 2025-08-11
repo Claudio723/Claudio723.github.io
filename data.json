@@ -12,7 +12,7 @@
     },
     {
       "title": "xAI-Tools für Security",
-      "description": "Nutze web_search für Threat-Intel oder x_semantic_search für X-Posts zu aktuellen Bedrohungen.",
+      "description": "Nutze web_search für Threat-Intel, browse_page für Site-Analyse oder x_semantic_search für X-Posts zu Bedrohungen.",
       "icon": "fa-tools"
     }
   ],
@@ -28,9 +28,9 @@
       "snippet": "<pre><code>web_search query='Top Cyber Threats 2025'</code></pre>"
     },
     {
-      "title": "X Semantic Search",
-      "description": "Finde relevante X-Posts zu Security-Themen.",
-      "snippet": "<pre><code>x_semantic_search query='Cyber Security Schweiz'</code></pre>"
+      "title": "Browse Page",
+      "description": "Analysiere Websites auf Vulnerabilities. Beispiel: browse_page url='https://example.com' instructions='Check for security headers'.",
+      "snippet": "<pre><code>browse_page url='https://schweiz.ch'</code></pre>"
     }
   ],
   "chatResponses": {
