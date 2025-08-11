@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pill-Style Card */
-.card {
-  @apply bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300;
-}
-
-/* Debugging: Rot bei ungestylt */
-body.unstyled {
-  border: 2px solid red;
+@layer components {
+  /* Pill-Style Card */
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300;
+    /* Fallback für Blur */
+    filter: blur(0.5px); /* Wenn backdrop-blur nicht unterstützt */
+  }
 }
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
-  .header {
+  header {
     @apply py-2 px-4;
   }
   .hero h1 {
@@ -23,4 +22,9 @@ body.unstyled {
   #wissen-cards {
     @apply grid-cols-1;
   }
+}
+
+/* Debugging: Rot bei ungestylt */
+body.unstyled {
+  border: 2px solid red;
 }

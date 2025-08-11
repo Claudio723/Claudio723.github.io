@@ -12,7 +12,7 @@
     },
     {
       "title": "xAI-Tools für Security",
-      "description": "Nutze web_search für Threat-Intel, browse_page für Site-Analyse oder x_semantic_search für X-Posts zu Bedrohungen.",
+      "description": "Nutze web_search für Threat-Intel, browse_page für Site-Analyse (z.B. CSS-Vulnerabilities) oder x_semantic_search für X-Posts zu Bedrohungen.",
       "icon": "fa-tools"
     }
   ],
@@ -29,7 +29,7 @@
     },
     {
       "title": "Browse Page",
-      "description": "Analysiere Websites auf Vulnerabilities. Beispiel: browse_page url='https://example.com' instructions='Check for security headers'.",
+      "description": "Analysiere Websites auf Vulnerabilities oder Styles. Beispiel: browse_page url='https://example.com' instructions='Check CSS loading'.",
       "snippet": "<pre><code>browse_page url='https://schweiz.ch'</code></pre>"
     }
   ],
